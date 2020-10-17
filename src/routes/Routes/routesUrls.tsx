@@ -1,7 +1,7 @@
 const routesUrls = {
-    HOME: '/',
-    CREATE: '/create',
-    GALLERY: '/gallery'
-}
+  HOME: '/',
+  CREATE: '/create',
+  GALLERY: '/gallery'
+};
 
 export default routesUrls;

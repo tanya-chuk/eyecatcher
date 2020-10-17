@@ -38,17 +38,17 @@ const Home: FC = () => {
       id: 'gallery',
       description: 'Need insipration!',
       route: routesUrls.GALLERY
-    }]
+    }];
 
   const handleClick = (route: string) => () => history.push(route);
 
   return <div className={classes.root}>
-      <Typography variant='h3'>Hello there!</Typography>
-      <Typography variant='body1'>What's the plan?</Typography>
-      <div className={classes.btnWrapper}>
-        {options.map(({id, description, route}) => <Button key={id} onClick={handleClick(route)}>{description}</Button>)}
-      </div>
+    <Typography variant='h3'>Hello there!</Typography>
+    <Typography variant='body1'>What&apos;s the plan?</Typography>
+    <div className={classes.btnWrapper}>
+      {options.map(({id, description, route}) => <Button key={id} onClick={handleClick(route)}>{description}</Button>)}
     </div>
-}
+  </div>;
+};
 
-export default Home
+export default Home;

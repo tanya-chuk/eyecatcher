@@ -12,6 +12,6 @@ const Routes = () => {
       <Route path="/gallery" component={Gallery}/>
     </Switch>
   );
-}
+};
 
 export default Routes;

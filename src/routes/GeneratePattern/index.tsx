@@ -28,67 +28,67 @@ const useStyles = makeStyles(({ spacing }) => ({
 
 const GeneratePattern: FC = () => {
   const [elementAppearance, setElementAppearance] = useState<any>({
-      color: '',
-      type: 'filled',
-      animation: ''
-    })
-  
-    const classes = useStyles({color: elementAppearance.color, type: elementAppearance.type, animation: elementAppearance.animation});
-  
-    const handleChangeAppearance = (type: any) => (e: any) => {
-      setElementAppearance({...elementAppearance, [type]: e.target.value})
-    }
+    color: '',
+    type: 'filled',
+    animation: ''
+  });
 
-    return (
-      <div className="App">
-        <Typography variant='h2'>hello there</Typography>
-        <div className={classes.root}>
-          <div className={classes.result}>
-            <div className={classes.element}>hello</div>
-          </div>
-          <div className={classes.result}>
+  const classes = useStyles({color: elementAppearance.color, type: elementAppearance.type, animation: elementAppearance.animation});
+
+  const handleChangeAppearance = (type: any) => (e: any) => {
+    setElementAppearance({...elementAppearance, [type]: e.target.value});
+  };
+
+  return (
+    <div className="App">
+      <Typography variant='h2'>hello there</Typography>
+      <div className={classes.root}>
+        <div className={classes.result}>
+          <div className={classes.element}>hello</div>
+        </div>
+        <div className={classes.result}>
             lets choose
-            <FormControl>
-              <InputLabel id="demo-simple-select-label">Color</InputLabel>
-                <Select
-                  labelId="color-label"
-                  id="demo-simple-select"
-                  value={elementAppearance.color}
-                  onChange={handleChangeAppearance('color')}
-                >
-                <MenuItem value='red'>Red</MenuItem>
-                <MenuItem value='green'>Green</MenuItem>
-                <MenuItem value='blue'>blue</MenuItem>
-              </Select>
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">Color</InputLabel>
+            <Select
+              labelId="color-label"
+              id="demo-simple-select"
+              value={elementAppearance.color}
+              onChange={handleChangeAppearance('color')}
+            >
+              <MenuItem value='red'>Red</MenuItem>
+              <MenuItem value='green'>Green</MenuItem>
+              <MenuItem value='blue'>blue</MenuItem>
+            </Select>
           </FormControl>
           {elementAppearance.color && <FormControl>
-              <InputLabel id="demo-simple-select-label">Type</InputLabel>
-                <Select
-                  labelId="pattern-label"
-                  id="demo-simple-select"
-                  value={elementAppearance.type}
-                  onChange={handleChangeAppearance('type')}
-                >
-                <MenuItem value='filled'>filled</MenuItem>
-                <MenuItem value='outlined'>outlined</MenuItem>
-              </Select>
+            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <Select
+              labelId="pattern-label"
+              id="demo-simple-select"
+              value={elementAppearance.type}
+              onChange={handleChangeAppearance('type')}
+            >
+              <MenuItem value='filled'>filled</MenuItem>
+              <MenuItem value='outlined'>outlined</MenuItem>
+            </Select>
           </FormControl>}
           {elementAppearance.color && <FormControl>
-              <InputLabel id="demo-simple-select-label">Animate</InputLabel>
-                <Select
-                  labelId="pattern-label"
-                  id="demo-simple-select"
-                  value={elementAppearance.animation}
-                  onChange={handleChangeAppearance('animation')}
-                >
-                <MenuItem value='scale'>scale</MenuItem>
-                <MenuItem value='skew'>skew</MenuItem>
-              </Select>
+            <InputLabel id="demo-simple-select-label">Animate</InputLabel>
+            <Select
+              labelId="pattern-label"
+              id="demo-simple-select"
+              value={elementAppearance.animation}
+              onChange={handleChangeAppearance('animation')}
+            >
+              <MenuItem value='scale'>scale</MenuItem>
+              <MenuItem value='skew'>skew</MenuItem>
+            </Select>
           </FormControl>}
-            </div>
         </div>
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default GeneratePattern;
