@@ -28,7 +28,7 @@ const useStyles = makeStyles(({ spacing }) => ({
     width: 200,
     margin: `${spacing(1.5)}px 0`
   },
-  element: ({color, type}: IStyles) => ({
+  element: ({ color, type }: IStyles) => ({
     width: 50,
     height: 50,
     borderRadius: '100%',
@@ -57,7 +57,7 @@ const GeneratePattern: FC = () => {
   });
 
   const handleChangeAppearance = (type: EElementSettings) => (e: ChangeEvent<{ value: unknown }>) => {
-    setElementAppearance({...elementAppearance, [type]: e.target.value});
+    setElementAppearance({ ...elementAppearance, [type]: e.target.value });
   };
 
   return (
@@ -69,7 +69,7 @@ const GeneratePattern: FC = () => {
           <div className={classes.element} />
         </div>
         <div className={clsx(classes.container, classes.formWrapper)}>
-          {fieldsConfig.map(({name, type, options}) => 
+          {fieldsConfig.map(({ name, type, options }) => 
             <FormControl key={type} className={classes.field}>
               <InputLabel id={`select-label-${type}`}>{name}</InputLabel>
               <Select

@@ -30,6 +30,7 @@ module.exports = {
     "prefer-const": "error",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": "warn",
-    "eol-last": "error"
+    "eol-last": "error",
+    "object-curly-spacing": ["error", "always"]
   }
 };
