@@ -4,10 +4,13 @@ export enum EElementSettings {
   animation = 'animation'
 }
 
-export type TElementType = 'filled' | 'outlined';
+export enum EElementType {
+  filled = 'filled',
+  outlined = 'outlined'
+}
 
 export interface IElementAppearance {
-  type: TElementType;
+  type: EElementType;
   color: string;
   animation: string;
 }
