@@ -1,7 +1,7 @@
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
-import routesUrls from '../Routes/routesUrls';
+import routesUrls from '../Root/routesUrls';
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {
@@ -42,13 +42,15 @@ const Home: FC = () => {
 
   const handleClick = (route: string) => () => history.push(route);
 
-  return <div className={classes.root}>
-    <Typography variant='h3'>Hello there!</Typography>
-    <Typography variant='body1'>What&apos;s the plan?</Typography>
-    <div className={classes.btnWrapper}>
-      {options.map(({id, description, route}) => <Button key={id} onClick={handleClick(route)}>{description}</Button>)}
+  return (
+    <div className={classes.root}>
+      <Typography variant='h3'>Hello there!</Typography>
+      <Typography variant='body1'>What&apos;s the plan?</Typography>
+      <div className={classes.btnWrapper}>
+        {options.map(({ id, description, route }) => <Button key={id} onClick={handleClick(route)}>{description}</Button>)}
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default Home;

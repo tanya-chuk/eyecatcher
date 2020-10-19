@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import { Switch, Route } from "react-router-dom";
 import Gallery from "../Gallery";
 import GeneratePattern from "../GeneratePattern";
 import Home from "../Home";
 
-const Routes = () => {
+const Root: FC = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
@@ -14,4 +14,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default Root;
