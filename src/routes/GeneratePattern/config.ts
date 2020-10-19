@@ -1,21 +1,42 @@
 export enum EElementSettings {
   color = 'color',
-  type = 'type',
-  animation = 'animation'
+  variant = 'variant',
+  animation = 'animation',
+  shape = 'shape'
 }
 
-export enum EElementType {
+export enum EElementVariant {
   filled = 'filled',
   outlined = 'outlined'
 }
 
+export enum EElementShape {
+  round = 'round',
+  square = 'square'
+}
+
 export interface IElementAppearance {
-  type: EElementType;
+  shape: EElementShape;
+  variant: EElementVariant;
   color: string;
   animation: string;
 }
 
 export const fieldsConfig = [
+  {
+    name: 'Choose shape',
+    type: EElementSettings.shape,
+    options: [
+      {
+        value: 'square',
+        name: 'Square'
+      },
+      {
+        value: 'round',
+        name: 'Round'
+      }
+    ]
+  },
   {
     name: 'Choose color',
     type: EElementSettings.color,
@@ -35,8 +56,8 @@ export const fieldsConfig = [
     ]
   },
   {
-    name: 'Choose element type',
-    type: EElementSettings.type,
+    name: 'Choose element variant',
+    type: EElementSettings.variant,
     options: [
       {
         value: 'filled',
