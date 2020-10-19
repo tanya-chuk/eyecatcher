@@ -6,7 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import clsx from 'clsx';
-import { EElementSettings, EElementType, fieldsConfig, IElementAppearance } from './config';
+import { EElementSettings, EElementShape, EElementVariant, fieldsConfig, IElementAppearance } from './config';
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {
@@ -28,33 +28,24 @@ const useStyles = makeStyles(({ spacing }) => ({
     width: 200,
     margin: `${spacing(1.5)}px 0`
   },
-  element: ({ color, type }: IStyles) => ({
+  element: ({ color, variant, shape }: IElementAppearance) => ({
     width: 50,
     height: 50,
-    borderRadius: '100%',
-    background: type === EElementType.filled ? color : 'transparent',
-    border: `4px solid ${type === EElementType.outlined ? color : 'transparent'}`
+    borderRadius: shape === EElementShape.round ? '100%' : 4,
+    background: variant === EElementVariant.filled ? color : 'transparent',
+    border: `4px solid ${variant === EElementVariant.outlined ? color : 'transparent'}`
   })
 }));
 
-interface IStyles {
-  type: EElementType;
-  color: string;
-  animation: string;
-}
-
 const GeneratePattern: FC = () => {
   const [elementAppearance, setElementAppearance] = useState<IElementAppearance>({
-    type: EElementType.filled,
+    shape: EElementShape.round,
+    variant: EElementVariant.filled,
     color: '',
     animation: ''
   });
 
-  const classes = useStyles({
-    color: elementAppearance.color,
-    type: elementAppearance.type,
-    animation: elementAppearance.animation
-  });
+  const classes = useStyles(elementAppearance);
 
   const handleChangeAppearance = (type: EElementSettings) => (e: ChangeEvent<{ value: unknown }>) => {
     setElementAppearance({ ...elementAppearance, [type]: e.target.value });
