@@ -16,6 +16,12 @@ export enum EElementShape {
   square = 'square'
 }
 
+export enum EElementAnimation {
+  pulse = 'pulse',
+  fade = 'fade',
+  skew = 'skew'
+}
+
 export interface IElementAppearance {
   shape: EElementShape;
   variant: EElementVariant;

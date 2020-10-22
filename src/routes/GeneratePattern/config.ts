@@ -52,12 +52,16 @@ export const fieldsConfig: IFieldConfig[] = [
     type: EElementSettings.animation,
     options: [
       {
-        value: 'skew',
-        name: 'Skew'
+        value: 'fade',
+        name: 'Fade'
       },
       {
-        value: 'scale',
-        name: 'Scale'
+        value: 'pulse',
+        name: 'Pulse'
+      },
+      {
+        value: 'skew',
+        name: 'Skew'
       }
     ]
   },
