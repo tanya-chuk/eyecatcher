@@ -6,15 +6,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import clsx from 'clsx';
-import { EElementSettings, EElementShape, EElementVariant, fieldsConfig, IElementAppearance } from './config';
+import { fieldsConfig, initialValues } from './config';
+import { IElementAppearance, EElementSettings } from './types';
+import { calcColumns } from './utils';
+import { v4 as uuidv4 } from 'uuid';
+import KaleidoscopeElement from '../../components/KaleidoscopeElement';
 
 const useStyles = makeStyles(({ spacing }) => ({
   root: {
     display: 'flex'
   },
   container: {
-    width: '50%',
-    height: 300,
+    minHeight: 300,
     borderRadius: 8,
     border: '2px solid grey',
     margin: spacing(2),
@@ -22,45 +25,57 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
   formWrapper: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '50%'
   },
   field: {
     width: 200,
     margin: `${spacing(1.5)}px 0`
   },
-  element: ({ color, variant, shape }: IElementAppearance) => ({
-    width: 50,
-    height: 50,
-    borderRadius: shape === EElementShape.round ? '100%' : 4,
-    background: variant === EElementVariant.filled ? color : 'transparent',
-    border: `4px solid ${variant === EElementVariant.outlined ? color : 'transparent'}`
-  })
+  kaleidoscope: ({ fieldSize }: IElementAppearance) => ({
+    display: 'grid',
+    gridTemplateColumns: calcColumns({ count: fieldSize, size: '60px' })
+  }),
+  demosWrapper: {
+    width: '50%'
+  }
 }));
 
 const GeneratePattern: FC = () => {
-  const [elementAppearance, setElementAppearance] = useState<IElementAppearance>({
-    shape: EElementShape.round,
-    variant: EElementVariant.filled,
-    color: '',
-    animation: ''
-  });
-
+  const [elementAppearance, setElementAppearance] = useState<IElementAppearance>(initialValues);
   const classes = useStyles(elementAppearance);
 
   const handleChangeAppearance = (type: EElementSettings) => (e: ChangeEvent<{ value: unknown }>) => {
     setElementAppearance({ ...elementAppearance, [type]: e.target.value });
   };
 
+  const renderKaleidoscopeElements = () => {
+    const kaleidoscopeElements = [];
+    const elementsCount = elementAppearance.fieldSize ** 2;
+    for (let i = 0; i < elementsCount; i++) {
+      kaleidoscopeElements.push(<KaleidoscopeElement key={uuidv4()} elementProps={elementAppearance} />);
+    }
+    return kaleidoscopeElements;
+  };
+
   return (
     <>
       <Typography variant='h2'>hello there</Typography>
       <div className={classes.root}>
-        <div className={classes.container}>
-          <Typography variant='h6'>Let&apos;s create some pattern here</Typography>
-          <div className={classes.element} />
+        <div className={classes.demosWrapper}>
+          <div className={classes.container}>
+            <Typography variant='h6'>Design your pattern&apos;s element</Typography>
+            <KaleidoscopeElement elementProps={elementAppearance} />
+          </div>
+          <div className={classes.container}>
+            <Typography variant='h6'>Now see the result</Typography>
+            <div className={classes.kaleidoscope}>
+              {renderKaleidoscopeElements()}
+            </div>
+          </div>
         </div>
         <div className={clsx(classes.container, classes.formWrapper)}>
-          {fieldsConfig.map(({ name, type, options }) => 
+          {fieldsConfig.map(({ name, type, options }) =>
             <FormControl key={type} className={classes.field}>
               <InputLabel id={`select-label-${type}`}>{name}</InputLabel>
               <Select
