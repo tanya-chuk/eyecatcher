@@ -25,8 +25,8 @@ export enum EElementAnimation {
 export interface IElementAppearance {
   shape: EElementShape;
   variant: EElementVariant;
+  animation: EElementAnimation;
   color: string;
-  animation: string;
   fieldSize: number;
 }
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IElementAppearance, EElementShape, EElementVariant, EElementAnimation } from '../../routes/GeneratePattern/types';
+import { IElementAppearance, EElementShape, EElementVariant } from '../../routes/GeneratePattern/types';
 import clsx from 'clsx';
 
 const useStyles = makeStyles({
@@ -44,7 +44,7 @@ interface IProps {
 
 const KaleidoscopeElement: FC<IProps> = ({ elementProps }) => {
   const classes = useStyles(elementProps);
-  return <div className={clsx(classes.root, (classes)[elementProps.animation as EElementAnimation])} />;
+  return <div className={clsx(classes.root, (classes)[elementProps.animation])} />;
 };
 
 export default KaleidoscopeElement;

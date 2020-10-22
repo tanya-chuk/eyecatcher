@@ -1,4 +1,4 @@
-import { IFieldConfig, EElementSettings, EElementShape, EElementVariant } from "./types";
+import { IFieldConfig, EElementSettings, EElementShape, EElementVariant, EElementAnimation } from "./types";
 
 export const fieldsConfig: IFieldConfig[] = [
   {
@@ -88,7 +88,7 @@ export const fieldsConfig: IFieldConfig[] = [
 export const initialValues = {
   shape: EElementShape.round,
   variant: EElementVariant.filled,
+  animation: EElementAnimation.pulse,
   color: 'red',
-  animation: '',
   fieldSize: 3
 };
