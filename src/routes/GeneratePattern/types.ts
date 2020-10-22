@@ -16,11 +16,17 @@ export enum EElementShape {
   square = 'square'
 }
 
+export enum EElementAnimation {
+  pulse = 'pulse',
+  fade = 'fade',
+  skew = 'skew'
+}
+
 export interface IElementAppearance {
   shape: EElementShape;
   variant: EElementVariant;
+  animation: EElementAnimation;
   color: string;
-  animation: string;
   fieldSize: number;
 }
 
